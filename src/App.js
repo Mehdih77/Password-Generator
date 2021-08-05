@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import './App.css';
 import {UpperCaseLetters,LowerCaseLetters,Numbers,Symbols} from './utils/Charactar';
+import Toastify from './components/Toastify';
 
 function App() {
 
@@ -10,9 +11,18 @@ function App() {
     const [includeLowerCase,setIncludeLowerCase] = useState(false);
     const [includeNumbers,setIncludeNumbers] = useState(false);
     const [includeSymbols,setIncludeSymbols] = useState(false);
+    // useState for toast
+    const [toastErrorCopy, setToastErrorCopy] = useState(false);
+    const [toastSuccessCopy, setToastSuccessCopy] = useState(false);
+    const [toastErrorChoseCheckBox, setToastErrorChoseCheckBox] = useState(false);
 
 
     function handleGeneratePassword(e) {
+
+      if (!includeUpperCase,!includeLowerCase,!includeNumbers,!includeSymbols) {
+        setToastErrorChoseCheckBox(true)
+      }
+
       e.preventDefault();
       let charactars = '';
       if (includeUpperCase) {
@@ -51,6 +61,12 @@ function App() {
     }
     function handleCopyPassword() {
       copyToClipboard();
+      if (!password) {
+        setToastErrorCopy(true);
+      }
+      if (password) {
+        setToastSuccessCopy(true)
+      }
     }
 
 
@@ -107,6 +123,9 @@ function App() {
                         onChange={(e) => setIncludeSymbols(e.target.checked)}/>
                 </div>
                 <button onClick={handleGeneratePassword} className='password-btn' type='submit'>Generate Password</button>
+            { toastErrorCopy && <Toastify type='error' message='Nothing to copy' />}
+            { toastSuccessCopy && <Toastify type='success' message='Copyed to your clipoard' />}
+            { toastErrorChoseCheckBox && <Toastify type='error' message='You must select atleast one option' />}
             </div>
         </div>
     );
