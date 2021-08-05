@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.password-generator {
+  width: 450px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: rgb(0, 60, 138);
+  color: rgb(240, 240, 240);
+}
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  background-color: rgb(0, 85, 155);
+  padding: 20px;
+  position: relative;
+  margin-top: 15px;
+}
+.password-header h3 {
+  font-size: 17px;
+  word-break: break-all;
+  width: 350px;
+}
+.password-header button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background-color: rgb(0, 56, 129);
+  border: none;
+  cursor: pointer;
+}
+.password-header button i {
+  font-size: 30px;
+  color: rgb(240, 240, 240);
+}
+.password-form {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+.password-form input[type="number"] {
+  width: 40px;
+  outline: none;
+}
+.password-btn {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(0, 82, 190);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
