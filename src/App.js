@@ -27,16 +27,30 @@ function App() {
       if (includeSymbols) {
         charactars += Symbols;
       }
-      setPassword(createRandomPassword(charactars))
+      setPassword(createRandomPassword(charactars));
     }
 
+    // for creating random password of charactars
     const createRandomPassword = (charactars) => {
       let password = '';
-      for (let i = 0; i < passwordLength; i++) {
-        const charactarIndex = Math.round(Math.random() * charactars.length);
-        password += charactars.charAt(charactarIndex)
+      for ( let i = 0; i < passwordLength; i++ ) {
+        const charactarIndex = Math.round( Math.random() * charactars.length );
+        password += charactars.charAt(charactarIndex);
       }
       return password;
+    }
+
+    // Copy To Clipboard Function
+    const copyToClipboard = () => {
+      const newTextArea = document.createElement("textarea");
+      newTextArea.innerHTML = password;
+      document.body.appendChild(newTextArea);
+      newTextArea.select();
+      document.execCommand('copy');
+      newTextArea.remove();
+    }
+    function handleCopyPassword() {
+      copyToClipboard();
     }
 
 
@@ -46,7 +60,7 @@ function App() {
             <div className='password-generator'>
                 <div className='password-header'>
                     <h3>{password}</h3>
-                    <button>
+                    <button onClick={handleCopyPassword}>
                         <i className="far fa-copy"></i>
                     </button>
                 </div>
