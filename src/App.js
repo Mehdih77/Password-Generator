@@ -19,7 +19,7 @@ function App() {
 
     function handleGeneratePassword(e) {
 
-      if (!includeUpperCase,!includeLowerCase,!includeNumbers,!includeSymbols) {
+      if (!includeUpperCase && !includeLowerCase && !includeNumbers && !includeSymbols) {
         setToastErrorChoseCheckBox(true)
       }
 
